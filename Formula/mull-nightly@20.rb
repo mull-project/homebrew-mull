@@ -8,7 +8,7 @@ class MullNightlyAT20 < Formula
     skip "Nightly builds are updated automatically"
   end
 
-  depends_on "llvm"
+  depends_on "llvm@20"
   depends_on :macos
 
   on_macos do

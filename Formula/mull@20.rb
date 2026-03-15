@@ -4,7 +4,7 @@ class MullAT20 < Formula
   version "0.29.0"
   license "Apache-2.0"
 
-  depends_on "llvm"
+  depends_on "llvm@20"
   depends_on :macos
 
   on_macos do
