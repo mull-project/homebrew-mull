@@ -4,10 +4,6 @@ on:
   repository_dispatch:
     types: [update-formula]
   workflow_dispatch:
-
-concurrency:
-  group: update-formula
-  cancel-in-progress: false
     inputs:
       channel:
         description: 'Release channel'
@@ -29,6 +25,10 @@ concurrency:
       package_sha256:
         description: 'Package SHA256'
         required: true
+
+concurrency:
+  group: update-formula
+  cancel-in-progress: false
 
 jobs:
   update:
