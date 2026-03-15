@@ -20,7 +20,7 @@ jobs:
       - name: Regenerate formulas from mull repo
         run: |
           cd mull
-          bazel run //tools:generate-homebrew-formulas -- $GITHUB_WORKSPACE
+          bazel run //infrastructure:generate-homebrew-formulas -- $GITHUB_WORKSPACE
 
       - name: Check for differences
         run: |
@@ -28,7 +28,7 @@ jobs:
             echo "::error::Formulas are out of sync with mull repo!"
             echo ""
             echo "In the mull repo, run:"
-            echo "  bazel run //tools:generate-homebrew-formulas -- /path/to/homebrew-mull"
+            echo "  bazel run //infrastructure:generate-homebrew-formulas -- /path/to/homebrew-mull"
             exit 1
           fi
           echo "Formulas are in sync."

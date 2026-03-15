@@ -38,7 +38,7 @@ Formulas are generated from the main [mull repo](https://github.com/mull-project
 
 ```bash
 # In the mull repo:
-bazel run //tools:generate-homebrew-formulas -- /path/to/homebrew-mull
+bazel run //infrastructure:generate-homebrew-formulas -- /path/to/homebrew-mull
 ```
 
 URL and SHA256 are updated automatically when packages are published to Cloudsmith.
