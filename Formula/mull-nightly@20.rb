@@ -21,17 +21,17 @@ class MullNightlyAT20 < Formula
   conflicts_with "mull@20", because: "both install mull-runner-20"
   conflicts_with "mull-testing@20", because: "both install mull-runner-20"
   def install
-    bin.install "usr/local/bin/mull-runner-20"
-    bin.install "usr/local/bin/mull-reporter-20"
-    lib.install "usr/local/lib/mull-ir-frontend-20"
-    man1.install "usr/local/share/man/man1/mull-runner-20.1"
-    man1.install "usr/local/share/man/man1/mull-reporter-20.1"
-    bash_completion.install "usr/local/share/bash-completion/completions/mull-runner-20"
-    bash_completion.install "usr/local/share/bash-completion/completions/mull-reporter-20"
-    zsh_completion.install "usr/local/share/zsh/site-functions/_mull-runner-20"
-    zsh_completion.install "usr/local/share/zsh/site-functions/_mull-reporter-20"
-    fish_completion.install "usr/local/share/fish/vendor_completions.d/mull-runner-20.fish"
-    fish_completion.install "usr/local/share/fish/vendor_completions.d/mull-reporter-20.fish"
+    bin.install "bin/mull-runner-20"
+    bin.install "bin/mull-reporter-20"
+    lib.install "lib/mull-ir-frontend-20"
+    man1.install "share/man/man1/mull-runner-20.1"
+    man1.install "share/man/man1/mull-reporter-20.1"
+    bash_completion.install "share/bash-completion/completions/mull-runner-20"
+    bash_completion.install "share/bash-completion/completions/mull-reporter-20"
+    zsh_completion.install "share/zsh/site-functions/_mull-runner-20"
+    zsh_completion.install "share/zsh/site-functions/_mull-reporter-20"
+    fish_completion.install "share/fish/vendor_completions.d/mull-runner-20.fish"
+    fish_completion.install "share/fish/vendor_completions.d/mull-reporter-20.fish"
   end
 
   def caveats

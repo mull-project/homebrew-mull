@@ -1,7 +1,7 @@
 class MullTestingAT18 < Formula
   desc "Practical mutation testing for C and C++ - Testing (LLVM 18)"
   homepage "https://github.com/mull-project/mull"
-  version "0.29.0.pr1159"
+  version "0.29.0.pr1"
   license "Apache-2.0"
 
   livecheck do
@@ -13,25 +13,25 @@ class MullTestingAT18 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull-18/versions/0.29.0.pr1159/Mull-18-0.29.0.pr1159-LLVM-18.1.8-macOS-aarch64-15.7.4.zip"
-      sha256 "1cef703f47eeb0183ac49ced40145711650e3a5f1639891747681526689b1933"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull-18/versions/0.29.0.pr1/PACKAGE_FILENAME_PLACEHOLDER"
+      sha256 "PLACEHOLDER_SHA256"
     end
   end
 
   conflicts_with "mull@18", because: "both install mull-runner-18"
   conflicts_with "mull-nightly@18", because: "both install mull-runner-18"
   def install
-    bin.install "usr/local/bin/mull-runner-18"
-    bin.install "usr/local/bin/mull-reporter-18"
-    lib.install "usr/local/lib/mull-ir-frontend-18"
-    man1.install "usr/local/share/man/man1/mull-runner-18.1"
-    man1.install "usr/local/share/man/man1/mull-reporter-18.1"
-    bash_completion.install "usr/local/share/bash-completion/completions/mull-runner-18"
-    bash_completion.install "usr/local/share/bash-completion/completions/mull-reporter-18"
-    zsh_completion.install "usr/local/share/zsh/site-functions/_mull-runner-18"
-    zsh_completion.install "usr/local/share/zsh/site-functions/_mull-reporter-18"
-    fish_completion.install "usr/local/share/fish/vendor_completions.d/mull-runner-18.fish"
-    fish_completion.install "usr/local/share/fish/vendor_completions.d/mull-reporter-18.fish"
+    bin.install "bin/mull-runner-18"
+    bin.install "bin/mull-reporter-18"
+    lib.install "lib/mull-ir-frontend-18"
+    man1.install "share/man/man1/mull-runner-18.1"
+    man1.install "share/man/man1/mull-reporter-18.1"
+    bash_completion.install "share/bash-completion/completions/mull-runner-18"
+    bash_completion.install "share/bash-completion/completions/mull-reporter-18"
+    zsh_completion.install "share/zsh/site-functions/_mull-runner-18"
+    zsh_completion.install "share/zsh/site-functions/_mull-reporter-18"
+    fish_completion.install "share/fish/vendor_completions.d/mull-runner-18.fish"
+    fish_completion.install "share/fish/vendor_completions.d/mull-reporter-18.fish"
   end
 
   def caveats
