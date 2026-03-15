@@ -1,17 +1,48 @@
-# Mull-project Mull
+# Homebrew Tap for Mull
 
-## How do I install these formulae?
+[Mull](https://github.com/mull-project/mull) is a practical mutation testing tool for C and C++.
 
-`brew install mull-project/mull/<formula>`
+## Installation
 
-Or `brew tap mull-project/mull` and then `brew install <formula>`.
-
-Or install via URL (which will not receive updates):
-
-```
-brew install https://raw.githubusercontent.com/mull-project/homebrew-mull/master/Formula/<formula>.rb
+```bash
+brew tap mull-project/mull
+brew install mull@19   # or mull@16, mull@17, mull@18, mull@20
 ```
 
-## Documentation
+### Development Builds
 
-`brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
+```bash
+# Nightly builds (from main branch)
+brew install mull-nightly@19
+
+# Testing builds (from PRs)
+brew install mull-testing@19
+```
+
+## Usage
+
+```bash
+# Run mutation testing
+mull-runner-19 --help
+
+# Generate reports
+mull-reporter-19 --help
+
+# Use the Clang plugin
+clang -fpass-plugin=$(brew --prefix)/lib/mull-ir-frontend-19 your_code.c
+```
+
+## Maintaining This Tap
+
+Formulas are generated from the main [mull repo](https://github.com/mull-project/mull). Config comes from `MODULE.bazel`.
+
+```bash
+# In the mull repo:
+bazel run //tools:generate-homebrew-formulas -- /path/to/homebrew-mull
+```
+
+URL and SHA256 are updated automatically when packages are published to Cloudsmith.
+
+## Support
+
+[Main Mull Repository](https://github.com/mull-project/mull/issues)

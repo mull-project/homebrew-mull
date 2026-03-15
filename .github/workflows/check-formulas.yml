@@ -1,0 +1,34 @@
+name: Check Formulas
+
+on:
+  schedule:
+    # Check weekly if formulas are in sync with main mull repo
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/checkout@v4
+        with:
+          repository: mull-project/mull
+          path: mull
+
+      - name: Regenerate formulas from mull repo
+        run: |
+          cd mull
+          bazel run //tools:generate-homebrew-formulas -- $GITHUB_WORKSPACE
+
+      - name: Check for differences
+        run: |
+          if ! git diff --exit-code Formula/; then
+            echo "::error::Formulas are out of sync with mull repo!"
+            echo ""
+            echo "In the mull repo, run:"
+            echo "  bazel run //tools:generate-homebrew-formulas -- /path/to/homebrew-mull"
+            exit 1
+          fi
+          echo "Formulas are in sync."
