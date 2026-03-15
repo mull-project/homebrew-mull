@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [update-formula]
   workflow_dispatch:
+
+concurrency:
+  group: update-formula
+  cancel-in-progress: false
     inputs:
       channel:
         description: 'Release channel'
@@ -79,4 +83,10 @@ jobs:
           fi
 
           git commit -m "Update mull${CHANNEL:+"-$CHANNEL"}@${LLVM_VERSION} to ${MULL_VERSION}"
-          git push
+
+          for i in {1..5}; do
+            git push && exit 0
+            echo "Push failed, rebasing and retrying..."
+            git pull --rebase
+          done
+          exit 1
