@@ -22,6 +22,9 @@ on:
       package_filename:
         description: 'Package filename'
         required: true
+      package_sha256:
+        description: 'Package SHA256'
+        required: true
 
 concurrency:
   group: update-formula
@@ -38,6 +41,7 @@ jobs:
       MULL_VERSION: ${{ github.event.client_payload.mull_version || inputs.mull_version }}
       LLVM_VERSION: ${{ github.event.client_payload.llvm_version || inputs.llvm_version }}
       PACKAGE_FILENAME: ${{ github.event.client_payload.package_filename || inputs.package_filename }}
+      PACKAGE_SHA256: ${{ github.event.client_payload.package_sha256 || inputs.package_sha256 }}
 
     steps:
       - uses: actions/checkout@v4
@@ -56,10 +60,6 @@ jobs:
           fi
 
           URL="https://dl.cloudsmith.io/public/mull-project/mull-${CHANNEL}/raw/names/mull-${LLVM_VERSION}/versions/${MULL_VERSION}/${PACKAGE_FILENAME}"
-
-          echo "Downloading package to compute SHA256..."
-          curl -sLf -o /tmp/package.zip "$URL"
-          PACKAGE_SHA256=$(shasum -a 256 /tmp/package.zip | cut -d' ' -f1)
 
           echo "Updating $FORMULA"
           echo "  Version: $MULL_VERSION"
