@@ -14,7 +14,7 @@ class MullNightlyAT17 < Formula
   on_macos do
     on_arm do
       url "https://dl.cloudsmith.io/public/mull-project/mull-nightly/raw/names/mull-17/versions/0.32.0.trunk1775501393/Mull-17-0.32.0.trunk1775501393-LLVM-17.0.6-macOS-aarch64-15.7.4.zip"
-      sha256 "51622bce05e432df20d914588c11d9dbfaea9a5f67336de9ba1d69300fe191d7"
+      sha256 "85afc438d9e1c1e03bffbf51fd1b7b6a5baa5bbed8a071d482d2bb045f5390bc"
     end
   end
 
