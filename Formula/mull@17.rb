@@ -1,7 +1,7 @@
 class MullAT17 < Formula
   desc "Practical mutation testing for C and C++ (LLVM 17)"
   homepage "https://github.com/mull-project/mull"
-  version "0.33.0"
+  version "0.34.1"
   license "Apache-2.0"
 
   depends_on "llvm@17"
@@ -9,8 +9,8 @@ class MullAT17 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-17/versions/0.33.0/Mull-17-0.33.0-LLVM-17.0.6-macOS-aarch64-15.7.4.zip"
-      sha256 "c182de5a38345ccc5e1cfad27c314d51f9a91d5b72ab30b5b4e67de9a0ea429e"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-17/versions/0.34.1/Mull-17-0.34.1-LLVM-17.0.6-macOS-aarch64-26.6.2.zip"
+      sha256 "6423367e09b84a4b1274256c0a5a4226907c5914cc4735eedc8389fca3839fb4"
     end
   end
 
