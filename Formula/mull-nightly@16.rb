@@ -21,6 +21,7 @@ class MullNightlyAT16 < Formula
   conflicts_with "mull@16", because: "both install mull-runner-16"
   conflicts_with "mull-testing@16", because: "both install mull-runner-16"
   def install
+    bin.install "bin/mull-instrument-16"
     bin.install "bin/mull-runner-16"
     bin.install "bin/mull-reporter-16"
     lib.install "lib/mull-ir-frontend-16"
@@ -41,6 +42,7 @@ class MullNightlyAT16 < Formula
       This is a development build and may be unstable.
 
       Binaries installed:
+        mull-instrument-16
         mull-runner-16
         mull-reporter-16
 

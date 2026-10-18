@@ -17,6 +17,7 @@ class MullAT17 < Formula
   conflicts_with "mull-nightly@17", because: "both install mull-runner-17"
   conflicts_with "mull-testing@17", because: "both install mull-runner-17"
   def install
+    bin.install "bin/mull-instrument-17"
     bin.install "bin/mull-runner-17"
     bin.install "bin/mull-reporter-17"
     lib.install "lib/mull-ir-frontend-17"
@@ -35,6 +36,7 @@ class MullAT17 < Formula
       Mull has been installed with LLVM 17 support.
 
       Binaries installed:
+        mull-instrument-17
         mull-runner-17
         mull-reporter-17
 

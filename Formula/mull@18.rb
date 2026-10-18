@@ -17,6 +17,7 @@ class MullAT18 < Formula
   conflicts_with "mull-nightly@18", because: "both install mull-runner-18"
   conflicts_with "mull-testing@18", because: "both install mull-runner-18"
   def install
+    bin.install "bin/mull-instrument-18"
     bin.install "bin/mull-runner-18"
     bin.install "bin/mull-reporter-18"
     lib.install "lib/mull-ir-frontend-18"
@@ -35,6 +36,7 @@ class MullAT18 < Formula
       Mull has been installed with LLVM 18 support.
 
       Binaries installed:
+        mull-instrument-18
         mull-runner-18
         mull-reporter-18
 

@@ -17,6 +17,7 @@ class MullAT16 < Formula
   conflicts_with "mull-nightly@16", because: "both install mull-runner-16"
   conflicts_with "mull-testing@16", because: "both install mull-runner-16"
   def install
+    bin.install "bin/mull-instrument-16"
     bin.install "bin/mull-runner-16"
     bin.install "bin/mull-reporter-16"
     lib.install "lib/mull-ir-frontend-16"
@@ -35,6 +36,7 @@ class MullAT16 < Formula
       Mull has been installed with LLVM 16 support.
 
       Binaries installed:
+        mull-instrument-16
         mull-runner-16
         mull-reporter-16
 
