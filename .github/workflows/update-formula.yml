@@ -26,10 +26,6 @@ on:
         description: 'Package SHA256'
         required: true
 
-concurrency:
-  group: update-formula
-  cancel-in-progress: false
-
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -46,12 +42,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Update formula
+      - name: Update formula, commit and push
         run: |
           if [[ "$CHANNEL" == "stable" ]]; then
             FORMULA="Formula/mull@${LLVM_VERSION}.rb"
+            NAME="mull@${LLVM_VERSION}"
           else
             FORMULA="Formula/mull-${CHANNEL}@${LLVM_VERSION}.rb"
+            NAME="mull-${CHANNEL}@${LLVM_VERSION}"
           fi
 
           if [[ ! -f "$FORMULA" ]]; then
@@ -66,27 +64,30 @@ jobs:
           echo "  URL: $URL"
           echo "  SHA256: $PACKAGE_SHA256"
 
-          sed -i "s|version \"[^\"]*\"|version \"${MULL_VERSION}\"|" "$FORMULA"
-          sed -i "s|url \"[^\"]*\"|url \"${URL}\"|" "$FORMULA"
-          sed -i "s|sha256 \"[^\"]*\"|sha256 \"${PACKAGE_SHA256}\"|" "$FORMULA"
-
-      - name: Commit and push
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add Formula/
+          # Other runs may push concurrently. Instead of rebasing (which conflicts
+          # when two runs touch the same formula), start from the latest master and
+          # re-apply the edit on every attempt.
+          for i in {1..10}; do
+            git fetch origin master
+            git reset --hard origin/master
 
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
+            sed -i "s|version \"[^\"]*\"|version \"${MULL_VERSION}\"|" "$FORMULA"
+            sed -i "s|url \"[^\"]*\"|url \"${URL}\"|" "$FORMULA"
+            sed -i "s|sha256 \"[^\"]*\"|sha256 \"${PACKAGE_SHA256}\"|" "$FORMULA"
 
-          git commit -m "Update mull${CHANNEL:+"-$CHANNEL"}@${LLVM_VERSION} to ${MULL_VERSION}"
+            git add Formula/
+            if git diff --staged --quiet; then
+              echo "No changes to commit"
+              exit 0
+            fi
 
-          for i in {1..5}; do
-            git push && exit 0
-            echo "Push failed, rebasing and retrying..."
-            git pull --rebase
+            git commit -m "Update ${NAME} to ${MULL_VERSION}"
+            git push origin HEAD:master && exit 0
+
+            echo "Push failed (attempt $i), retrying..."
+            sleep $(( RANDOM % 10 + i * 2 ))
           done
           exit 1
