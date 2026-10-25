@@ -1,5 +1,5 @@
 class MullNightly < Formula
-  desc "Practical mutation testing for C and C++ - Nightly"
+  desc "Practical mutation testing for C and C++: core tools - Nightly"
   homepage "https://github.com/mull-project/mull"
   version "0.35.0.trunk1"
   license "Apache-2.0"

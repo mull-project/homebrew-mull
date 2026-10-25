@@ -1,5 +1,5 @@
 class MullNightlyAT19 < Formula
-  desc "Practical mutation testing for C and C++ - Nightly (LLVM 19)"
+  desc "Practical mutation testing for C and C++: Clang/LLVM 19 plugin - Nightly"
   homepage "https://github.com/mull-project/mull"
   version "0.35.0.trunk1792956799"
   license "Apache-2.0"

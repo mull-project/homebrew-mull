@@ -1,5 +1,5 @@
 class Mull < Formula
-  desc "Practical mutation testing for C and C++"
+  desc "Practical mutation testing for C and C++: core tools"
   homepage "https://github.com/mull-project/mull"
   version "0.35.0"
   license "Apache-2.0"

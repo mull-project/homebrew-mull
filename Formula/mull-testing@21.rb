@@ -1,5 +1,5 @@
 class MullTestingAT21 < Formula
-  desc "Practical mutation testing for C and C++ - Testing (LLVM 21)"
+  desc "Practical mutation testing for C and C++: Clang/LLVM 21 plugin - Testing"
   homepage "https://github.com/mull-project/mull"
   version "0.35.0.pr1205"
   license "Apache-2.0"
