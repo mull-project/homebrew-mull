@@ -1,7 +1,7 @@
 class MullNightlyAT16 < Formula
   desc "Practical mutation testing for C and C++ - Nightly (LLVM 16)"
   homepage "https://github.com/mull-project/mull"
-  version "0.34.2.trunk1792944785"
+  version "0.35.0.trunk1792952286"
   license "Apache-2.0"
 
   livecheck do
@@ -13,8 +13,8 @@ class MullNightlyAT16 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-nightly/raw/names/mull-16/versions/0.34.2.trunk1792944785/Mull-16-0.34.2.trunk1792944785-LLVM-16.0.6-macOS-aarch64-26.6.2.zip"
-      sha256 "177ec7dd9b9678e2db642963278c59099129af7619e27dc6a13929402886d32e"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-nightly/raw/names/mull-16/versions/0.35.0.trunk1792952286/Mull-16-0.35.0.trunk1792952286-LLVM-16.0.6-macOS-aarch64-26.6.2.zip"
+      sha256 "eb8e55251e09436e1cd9e82fa94d524f6c38aea836992a4c4da340735808ae79"
     end
   end
 
