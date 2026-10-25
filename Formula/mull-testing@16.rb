@@ -9,6 +9,7 @@ class MullTestingAT16 < Formula
   end
 
   depends_on "llvm@16"
+  depends_on "mull-project/mull/mull-testing"
   depends_on :macos
 
   on_macos do
@@ -18,21 +19,14 @@ class MullTestingAT16 < Formula
     end
   end
 
-  conflicts_with "mull@16", because: "both install mull-runner-16"
-  conflicts_with "mull-nightly@16", because: "both install mull-runner-16"
+  conflicts_with "mull@16", because: "both install mull-instrument-16"
+  conflicts_with "mull-nightly@16", because: "both install mull-instrument-16"
   def install
     bin.install "bin/mull-instrument-16"
-    bin.install "bin/mull-runner-16"
-    bin.install "bin/mull-reporter-16"
     lib.install "lib/mull-ir-frontend-16"
-    man1.install "share/man/man1/mull-runner-16.1"
-    man1.install "share/man/man1/mull-reporter-16.1"
-    bash_completion.install "share/bash-completion/completions/mull-runner-16"
-    bash_completion.install "share/bash-completion/completions/mull-reporter-16"
-    zsh_completion.install "share/zsh/site-functions/_mull-runner-16"
-    zsh_completion.install "share/zsh/site-functions/_mull-reporter-16"
-    fish_completion.install "share/fish/vendor_completions.d/mull-runner-16.fish"
-    fish_completion.install "share/fish/vendor_completions.d/mull-reporter-16.fish"
+    # Deprecated versioned names of the tools from mull-project/mull/mull-testing
+    bin.install_symlink Formula["mull-project/mull/mull-testing"].opt_bin/"mull-runner" => "mull-runner-16"
+    bin.install_symlink Formula["mull-project/mull/mull-testing"].opt_bin/"mull-reporter" => "mull-reporter-16"
   end
 
   def caveats
@@ -43,8 +37,8 @@ class MullTestingAT16 < Formula
 
       Binaries installed:
         mull-instrument-16
-        mull-runner-16
-        mull-reporter-16
+
+      mull-runner and mull-reporter come from mull-project/mull/mull-testing.
 
       The Clang plugin is installed at:
         #{lib}/mull-ir-frontend-16
@@ -55,6 +49,7 @@ class MullTestingAT16 < Formula
   end
 
   test do
-    assert_match "mull-runner", shell_output("#{bin}/mull-runner-16 --version")
+    # The linked mull-runner finds plugins in HOMEBREW_PREFIX/lib
+    assert_match "mull-ir-frontend-16", shell_output("#{HOMEBREW_PREFIX}/bin/mull-runner --version")
   end
 end

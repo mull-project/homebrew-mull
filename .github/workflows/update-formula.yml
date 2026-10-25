@@ -17,8 +17,8 @@ on:
         description: 'Mull version'
         required: true
       llvm_version:
-        description: 'LLVM major version'
-        required: true
+        description: 'LLVM major version, empty for the mull tools formula'
+        required: false
       package_filename:
         description: 'Package filename'
         required: true
@@ -44,20 +44,27 @@ jobs:
 
       - name: Update formula, commit and push
         run: |
-          if [[ "$CHANNEL" == "stable" ]]; then
-            FORMULA="Formula/mull@${LLVM_VERSION}.rb"
-            NAME="mull@${LLVM_VERSION}"
+          # Empty LLVM_VERSION: the LLVM-independent tools (mull.rb, Cloudsmith package `mull`)
+          if [[ -z "$LLVM_VERSION" ]]; then
+            SUFFIX=""
+            PACKAGE="mull"
           else
-            FORMULA="Formula/mull-${CHANNEL}@${LLVM_VERSION}.rb"
-            NAME="mull-${CHANNEL}@${LLVM_VERSION}"
+            SUFFIX="@${LLVM_VERSION}"
+            PACKAGE="mull-${LLVM_VERSION}"
           fi
+          if [[ "$CHANNEL" == "stable" ]]; then
+            NAME="mull${SUFFIX}"
+          else
+            NAME="mull-${CHANNEL}${SUFFIX}"
+          fi
+          FORMULA="Formula/${NAME}.rb"
 
           if [[ ! -f "$FORMULA" ]]; then
             echo "Error: Formula not found: $FORMULA"
             exit 1
           fi
 
-          URL="https://dl.cloudsmith.io/public/mull-project/mull-${CHANNEL}/raw/names/mull-${LLVM_VERSION}/versions/${MULL_VERSION}/${PACKAGE_FILENAME}"
+          URL="https://dl.cloudsmith.io/public/mull-project/mull-${CHANNEL}/raw/names/${PACKAGE}/versions/${MULL_VERSION}/${PACKAGE_FILENAME}"
 
           echo "Updating $FORMULA"
           echo "  Version: $MULL_VERSION"
