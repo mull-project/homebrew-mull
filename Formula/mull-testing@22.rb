@@ -41,10 +41,10 @@ class MullTestingAT22 < Formula
       mull-runner and mull-reporter come from mull-project/mull/mull-testing.
 
       The Clang plugin is installed at:
-        #{lib}/mull-ir-frontend-22
+        #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-22
 
       Usage with clang:
-        clang -fpass-plugin=#{lib}/mull-ir-frontend-22 ...
+        clang -fpass-plugin=#{HOMEBREW_PREFIX}/lib/mull-ir-frontend-22 ...
     EOS
   end
 

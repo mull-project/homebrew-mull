@@ -41,10 +41,10 @@ class MullNightlyAT17 < Formula
       mull-runner and mull-reporter come from mull-project/mull/mull-nightly.
 
       The Clang plugin is installed at:
-        #{lib}/mull-ir-frontend-17
+        #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-17
 
       Usage with clang:
-        clang -fpass-plugin=#{lib}/mull-ir-frontend-17 ...
+        clang -fpass-plugin=#{HOMEBREW_PREFIX}/lib/mull-ir-frontend-17 ...
     EOS
   end
 
