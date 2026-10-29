@@ -1,15 +1,15 @@
 class Mull < Formula
   desc "Practical mutation testing for C and C++: core tools"
   homepage "https://github.com/mull-project/mull"
-  version "0.35.0"
+  version "0.36.0"
   license "Apache-2.0"
 
   depends_on :macos
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull/versions/0.36.0/PACKAGE_FILENAME_PLACEHOLDER"
-      sha256 "PLACEHOLDER_SHA256"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull/versions/0.36.0/Mull-0.36.0-macOS-aarch64-26.6.2.zip"
+      sha256 "061779d0d51091694624179e7a98022bd38aeb4f91b6b3467fccc107d338db6c"
     end
   end
 
