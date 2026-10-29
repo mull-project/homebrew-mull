@@ -8,7 +8,7 @@ class Mull < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull/versions/0.35.0/PACKAGE_FILENAME_PLACEHOLDER"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull/versions/0.36.0/PACKAGE_FILENAME_PLACEHOLDER"
       sha256 "PLACEHOLDER_SHA256"
     end
   end

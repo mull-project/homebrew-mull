@@ -1,10 +1,11 @@
 class MullAT23 < Formula
-  desc "Practical mutation testing for C and C++ (LLVM 23)"
+  desc "Practical mutation testing for C and C++: Clang/LLVM 23 plugin"
   homepage "https://github.com/mull-project/mull"
   version "0.35.0"
   license "Apache-2.0"
 
   depends_on "llvm@23"
+  depends_on "mull-project/mull/mull"
   depends_on :macos
 
   on_macos do
@@ -14,21 +15,14 @@ class MullAT23 < Formula
     end
   end
 
-  conflicts_with "mull-nightly@23", because: "both install mull-runner-23"
-  conflicts_with "mull-testing@23", because: "both install mull-runner-23"
+  conflicts_with "mull-nightly@23", because: "both install mull-instrument-23"
+  conflicts_with "mull-testing@23", because: "both install mull-instrument-23"
   def install
     bin.install "bin/mull-instrument-23"
-    bin.install "bin/mull-runner-23"
-    bin.install "bin/mull-reporter-23"
     lib.install "lib/mull-ir-frontend-23"
-    man1.install "share/man/man1/mull-runner-23.1"
-    man1.install "share/man/man1/mull-reporter-23.1"
-    bash_completion.install "share/bash-completion/completions/mull-runner-23"
-    bash_completion.install "share/bash-completion/completions/mull-reporter-23"
-    zsh_completion.install "share/zsh/site-functions/_mull-runner-23"
-    zsh_completion.install "share/zsh/site-functions/_mull-reporter-23"
-    fish_completion.install "share/fish/vendor_completions.d/mull-runner-23.fish"
-    fish_completion.install "share/fish/vendor_completions.d/mull-reporter-23.fish"
+    # Deprecated versioned names of the tools from mull-project/mull/mull
+    bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-runner" => "mull-runner-23"
+    bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-reporter" => "mull-reporter-23"
   end
 
   def caveats
@@ -37,8 +31,8 @@ class MullAT23 < Formula
 
       Binaries installed:
         mull-instrument-23
-        mull-runner-23
-        mull-reporter-23
+
+      mull-runner and mull-reporter come from mull-project/mull/mull.
 
       The Clang plugin is installed at:
         #{lib}/mull-ir-frontend-23
@@ -49,6 +43,7 @@ class MullAT23 < Formula
   end
 
   test do
-    assert_match "mull-runner", shell_output("#{bin}/mull-runner-23 --version")
+    # The linked mull-runner finds plugins in HOMEBREW_PREFIX/lib
+    assert_match "mull-ir-frontend-23", shell_output("#{HOMEBREW_PREFIX}/bin/mull-runner --version")
   end
 end
