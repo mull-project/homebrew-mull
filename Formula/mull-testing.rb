@@ -1,7 +1,7 @@
 class MullTesting < Formula
   desc "Practical mutation testing for C and C++: core tools - Testing"
   homepage "https://github.com/mull-project/mull"
-  version "0.37.0.pr1215"
+  version "0.37.0.pr1216"
   license "Apache-2.0"
 
   livecheck do
@@ -12,8 +12,8 @@ class MullTesting < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull/versions/0.37.0.pr1215/Mull-0.37.0.pr1215-macOS-aarch64-26.7.2.zip"
-      sha256 "3c97a69fea6d616c93ba12467eefd7431da12d8528e5cc6c38ea7732133bd070"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull/versions/0.37.0.pr1216/Mull-0.37.0.pr1216-macOS-aarch64-26.6.2.zip"
+      sha256 "4deb59424b266e467be45640708acddd47048f905db44da230ec4b96aaff4325"
     end
   end
 
