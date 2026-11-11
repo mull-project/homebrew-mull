@@ -19,6 +19,9 @@ on:
       llvm_version:
         description: 'LLVM major version, empty for the mull tools formula'
         required: false
+      kind:
+        description: 'extras for the mull-extras@N formula, empty for mull@N'
+        required: false
       package_filename:
         description: 'Package filename'
         required: true
@@ -36,6 +39,7 @@ jobs:
       CHANNEL: ${{ github.event.client_payload.channel || inputs.channel }}
       MULL_VERSION: ${{ github.event.client_payload.mull_version || inputs.mull_version }}
       LLVM_VERSION: ${{ github.event.client_payload.llvm_version || inputs.llvm_version }}
+      KIND: ${{ github.event.client_payload.kind || inputs.kind }}
       PACKAGE_FILENAME: ${{ github.event.client_payload.package_filename || inputs.package_filename }}
       PACKAGE_SHA256: ${{ github.event.client_payload.package_sha256 || inputs.package_sha256 }}
 
@@ -45,9 +49,13 @@ jobs:
       - name: Update formula, commit and push
         run: |
           # Empty LLVM_VERSION: the LLVM-independent tools (mull.rb, Cloudsmith package `mull`)
+          # KIND=extras: the extra tools for LLVM N (mull-extras@N.rb, Cloudsmith package `mull-extras-N`)
           if [[ -z "$LLVM_VERSION" ]]; then
             SUFFIX=""
             PACKAGE="mull"
+          elif [[ "$KIND" == "extras" ]]; then
+            SUFFIX="-extras@${LLVM_VERSION}"
+            PACKAGE="mull-extras-${LLVM_VERSION}"
           else
             SUFFIX="@${LLVM_VERSION}"
             PACKAGE="mull-${LLVM_VERSION}"

@@ -9,6 +9,14 @@ brew tap mull-project/mull
 brew install mull@19   # or mull@16, mull@17, mull@18, mull@20
 ```
 
+### Extra Tools
+
+`mull-instrument` (adds mutants to LLVM bitcode) and `mull-rewriter` (writes the mutants of a report into the sources):
+
+```bash
+brew install mull-extras@19
+```
+
 ### Development Builds
 
 ```bash
@@ -17,6 +25,10 @@ brew install mull-nightly@19
 
 # Testing builds (from PRs)
 brew install mull-testing@19
+
+# Their extra tools
+brew install mull-nightly-extras@19
+brew install mull-testing-extras@19
 ```
 
 ## Usage

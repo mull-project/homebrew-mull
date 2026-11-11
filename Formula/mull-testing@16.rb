@@ -19,10 +19,9 @@ class MullTestingAT16 < Formula
     end
   end
 
-  conflicts_with "mull@16", because: "both install mull-instrument-16"
-  conflicts_with "mull-nightly@16", because: "both install mull-instrument-16"
+  conflicts_with "mull@16", because: "both install mull-ir-frontend-16"
+  conflicts_with "mull-nightly@16", because: "both install mull-ir-frontend-16"
   def install
-    bin.install "bin/mull-instrument-16"
     lib.install "lib/mull-ir-frontend-16"
     # Deprecated versioned names of the tools from mull-project/mull/mull-testing
     bin.install_symlink Formula["mull-project/mull/mull-testing"].opt_bin/"mull-runner" => "mull-runner-16"
@@ -35,10 +34,8 @@ class MullTestingAT16 < Formula
 
       This is a PR/testing build and may be unstable.
 
-      Binaries installed:
-        mull-instrument-16
-
       mull-runner and mull-reporter come from mull-project/mull/mull-testing.
+      mull-instrument and mull-rewriter come from mull-testing-extras@16.
 
       The Clang plugin is installed at:
         #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-16
