@@ -19,10 +19,9 @@ class MullNightlyAT20 < Formula
     end
   end
 
-  conflicts_with "mull@20", because: "both install mull-instrument-20"
-  conflicts_with "mull-testing@20", because: "both install mull-instrument-20"
+  conflicts_with "mull@20", because: "both install mull-ir-frontend-20"
+  conflicts_with "mull-testing@20", because: "both install mull-ir-frontend-20"
   def install
-    bin.install "bin/mull-instrument-20"
     lib.install "lib/mull-ir-frontend-20"
     # Deprecated versioned names of the tools from mull-project/mull/mull-nightly
     bin.install_symlink Formula["mull-project/mull/mull-nightly"].opt_bin/"mull-runner" => "mull-runner-20"
@@ -35,10 +34,8 @@ class MullNightlyAT20 < Formula
 
       This is a development build and may be unstable.
 
-      Binaries installed:
-        mull-instrument-20
-
       mull-runner and mull-reporter come from mull-project/mull/mull-nightly.
+      mull-instrument and mull-rewriter come from mull-nightly-extras@20.
 
       The Clang plugin is installed at:
         #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-20
