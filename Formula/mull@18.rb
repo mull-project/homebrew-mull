@@ -15,10 +15,9 @@ class MullAT18 < Formula
     end
   end
 
-  conflicts_with "mull-nightly@18", because: "both install mull-instrument-18"
-  conflicts_with "mull-testing@18", because: "both install mull-instrument-18"
+  conflicts_with "mull-nightly@18", because: "both install mull-ir-frontend-18"
+  conflicts_with "mull-testing@18", because: "both install mull-ir-frontend-18"
   def install
-    bin.install "bin/mull-instrument-18"
     lib.install "lib/mull-ir-frontend-18"
     # Deprecated versioned names of the tools from mull-project/mull/mull
     bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-runner" => "mull-runner-18"
@@ -29,10 +28,8 @@ class MullAT18 < Formula
     <<~EOS
       Mull has been installed with LLVM 18 support.
 
-      Binaries installed:
-        mull-instrument-18
-
       mull-runner and mull-reporter come from mull-project/mull/mull.
+      mull-instrument and mull-rewriter come from mull-extras@18.
 
       The Clang plugin is installed at:
         #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-18

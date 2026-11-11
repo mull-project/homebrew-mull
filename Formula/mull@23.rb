@@ -15,10 +15,9 @@ class MullAT23 < Formula
     end
   end
 
-  conflicts_with "mull-nightly@23", because: "both install mull-instrument-23"
-  conflicts_with "mull-testing@23", because: "both install mull-instrument-23"
+  conflicts_with "mull-nightly@23", because: "both install mull-ir-frontend-23"
+  conflicts_with "mull-testing@23", because: "both install mull-ir-frontend-23"
   def install
-    bin.install "bin/mull-instrument-23"
     lib.install "lib/mull-ir-frontend-23"
     # Deprecated versioned names of the tools from mull-project/mull/mull
     bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-runner" => "mull-runner-23"
@@ -29,10 +28,8 @@ class MullAT23 < Formula
     <<~EOS
       Mull has been installed with LLVM 23 support.
 
-      Binaries installed:
-        mull-instrument-23
-
       mull-runner and mull-reporter come from mull-project/mull/mull.
+      mull-instrument and mull-rewriter come from mull-extras@23.
 
       The Clang plugin is installed at:
         #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-23

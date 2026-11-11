@@ -15,10 +15,9 @@ class MullAT17 < Formula
     end
   end
 
-  conflicts_with "mull-nightly@17", because: "both install mull-instrument-17"
-  conflicts_with "mull-testing@17", because: "both install mull-instrument-17"
+  conflicts_with "mull-nightly@17", because: "both install mull-ir-frontend-17"
+  conflicts_with "mull-testing@17", because: "both install mull-ir-frontend-17"
   def install
-    bin.install "bin/mull-instrument-17"
     lib.install "lib/mull-ir-frontend-17"
     # Deprecated versioned names of the tools from mull-project/mull/mull
     bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-runner" => "mull-runner-17"
@@ -29,10 +28,8 @@ class MullAT17 < Formula
     <<~EOS
       Mull has been installed with LLVM 17 support.
 
-      Binaries installed:
-        mull-instrument-17
-
       mull-runner and mull-reporter come from mull-project/mull/mull.
+      mull-instrument and mull-rewriter come from mull-extras@17.
 
       The Clang plugin is installed at:
         #{HOMEBREW_PREFIX}/lib/mull-ir-frontend-17
