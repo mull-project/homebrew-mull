@@ -1,7 +1,7 @@
 class MullExtrasAT21 < Formula
   desc "Practical mutation testing for C and C++: Clang/LLVM 21 extra tools"
   homepage "https://github.com/mull-project/mull"
-  version "0.37.0"
+  version "0.38.0"
   license "Apache-2.0"
 
   depends_on "llvm@21"
@@ -10,8 +10,8 @@ class MullExtrasAT21 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-extras-21/versions/0.37.0/PACKAGE_FILENAME_PLACEHOLDER"
-      sha256 "PLACEHOLDER_SHA256"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-extras-21/versions/0.38.0/Mull-Extras-21-0.38.0-LLVM-21.1.8-macOS-aarch64-26.7.2.zip"
+      sha256 "7421a9c9c4f5c3fee9a3cfe0adaddd688ece96e75783a5915e6003f2767a4d9c"
     end
   end
 
