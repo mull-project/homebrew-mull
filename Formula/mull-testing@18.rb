@@ -15,7 +15,7 @@ class MullTestingAT18 < Formula
   on_macos do
     on_arm do
       url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull-18/versions/0.38.0.pr1227/Mull-18-0.38.0.pr1227-LLVM-18.1.8-macOS-aarch64-26.7.2.zip"
-      sha256 "9054de254c1d6051489221455b82f47eb79e7a60fec59c1921268739d18237df"
+      sha256 "83476bb2d4dbccdb9fcebfd8e2ff7568b52f191afd9c87ad6041980834f456f4"
     end
   end
 
