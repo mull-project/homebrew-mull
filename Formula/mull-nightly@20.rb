@@ -22,7 +22,8 @@ class MullNightlyAT20 < Formula
   conflicts_with "mull@20", because: "both install mull-ir-frontend-20"
   conflicts_with "mull-testing@20", because: "both install mull-ir-frontend-20"
   def install
-    lib.install "lib/mull-ir-frontend-20"
+    # Homebrew stages into the archive's sole top-level dir (lib/)
+    lib.install "mull-ir-frontend-20"
     # Deprecated versioned names of the tools from mull-project/mull/mull-nightly
     bin.install_symlink Formula["mull-project/mull/mull-nightly"].opt_bin/"mull-runner" => "mull-runner-20"
     bin.install_symlink Formula["mull-project/mull/mull-nightly"].opt_bin/"mull-reporter" => "mull-reporter-20"

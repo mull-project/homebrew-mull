@@ -18,7 +18,8 @@ class MullAT23 < Formula
   conflicts_with "mull-nightly@23", because: "both install mull-ir-frontend-23"
   conflicts_with "mull-testing@23", because: "both install mull-ir-frontend-23"
   def install
-    lib.install "lib/mull-ir-frontend-23"
+    # Homebrew stages into the archive's sole top-level dir (lib/)
+    lib.install "mull-ir-frontend-23"
     # Deprecated versioned names of the tools from mull-project/mull/mull
     bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-runner" => "mull-runner-23"
     bin.install_symlink Formula["mull-project/mull/mull"].opt_bin/"mull-reporter" => "mull-reporter-23"

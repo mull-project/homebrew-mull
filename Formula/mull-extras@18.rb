@@ -18,8 +18,9 @@ class MullExtrasAT18 < Formula
   conflicts_with "mull-nightly-extras@18", because: "both install mull-rewriter-18"
   conflicts_with "mull-testing-extras@18", because: "both install mull-rewriter-18"
   def install
-    bin.install "bin/mull-instrument-18"
-    bin.install "bin/mull-rewriter-18"
+    # Homebrew stages into the archive's sole top-level dir (bin/)
+    bin.install "mull-instrument-18"
+    bin.install "mull-rewriter-18"
   end
 
   def caveats
