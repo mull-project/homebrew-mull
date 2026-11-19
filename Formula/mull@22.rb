@@ -1,7 +1,7 @@
 class MullAT22 < Formula
   desc "Practical mutation testing for C and C++: Clang/LLVM 22 plugin"
   homepage "https://github.com/mull-project/mull"
-  version "0.39.0"
+  version "0.39.1"
   license "Apache-2.0"
 
   depends_on "llvm@22"
@@ -10,8 +10,8 @@ class MullAT22 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-22/versions/0.39.0/Mull-22-0.39.0-LLVM-22.1.8-macOS-aarch64-26.7.2.zip"
-      sha256 "1408df42a3ff2f0aab53829460303b55e0f3940889b4ef7f6a126798f7669f84"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-stable/raw/names/mull-22/versions/0.39.1/Mull-22-0.39.1-LLVM-22.1.8-macOS-aarch64-26.7.2.zip"
+      sha256 "d4f2300a67fefcef2b0d7916dec8b139380c07dfd8778d23e3ab17e18d32838d"
     end
   end
 
