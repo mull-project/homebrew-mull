@@ -1,7 +1,7 @@
 class MullTestingAT23 < Formula
   desc "Practical mutation testing for C and C++: Clang/LLVM 23 plugin - Testing"
   homepage "https://github.com/mull-project/mull"
-  version "0.39.1.pr1235"
+  version "0.39.1.pr1236"
   license "Apache-2.0"
 
   livecheck do
@@ -14,8 +14,8 @@ class MullTestingAT23 < Formula
 
   on_macos do
     on_arm do
-      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull-23/versions/0.39.1.pr1235/Mull-23-0.39.1.pr1235-LLVM-23.1.5-macOS-aarch64-26.7.2.zip"
-      sha256 "0c4f98c59a80ea05d8435559f270909669b05bf00aae9f6e2922396f65d0afdc"
+      url "https://dl.cloudsmith.io/public/mull-project/mull-testing/raw/names/mull-23/versions/0.39.1.pr1236/Mull-23-0.39.1.pr1236-LLVM-23.1.5-macOS-aarch64-26.7.2.zip"
+      sha256 "8983ee91929fa8235bd8bbe682253a453029415342f7c3c9e44c12b7c2b14c62"
     end
   end
 
